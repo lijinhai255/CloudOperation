@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -18620,7 +18620,8 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 33 */
+/* 33 */,
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18646,50 +18647,56 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // 引入请求数据的模块
 // 引入样式
 
-// 定义换肤组件
+// 定义confirm组件
+function confirm(props) {
+    var P = new Promise(function (resolve, reject) {
+        //做一些异步操作
+        setTimeout(function () {
+            if (props === "确定删除吗") {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        }, 2000);
+    });
+    return P;
+}
+
+// 定义
+
 var App = function (_Component) {
-	_inherits(App, _Component);
+    _inherits(App, _Component);
 
-	// 初始化状态
-	function App(props) {
-		_classCallCheck(this, App);
+    function App() {
+        _classCallCheck(this, App);
 
-		// 初始化
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-		// 构造函数继承
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
 
+    _createClass(App, [{
+        key: 'componentDidMount',
+        value: async function componentDidMount() {
+            var res = await confirm("确定删除吗");
+            console.log(res, 12);
+            if (res) {
+                console.log("是");
+            } else {
+                console.log("否");
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            // 返回虚拟DOM
+            return _react2.default.createElement(
+                'div',
+                null,
+                '12'
+            );
+        }
+    }]);
 
-		_this.state = {
-			value: "网易云课堂最棒了"
-		};
-		return _this;
-	}
-
-	_createClass(App, [{
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var value = this.state.value;
-			// 返回虚拟DOM
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement('input', { value: value, onChange: function onChange(e) {
-						return _this2.setState({ value: e.target.value });
-					} }),
-				'\u53D7\u63A7\u7EC4\u4EF6',
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('input', { defaultValue: value, ref: 'name', onChange: function onChange(e) {
-						return _this2.refs.name.value = e.target.value;
-					} }),
-				'\u975E\u53D7\u63A7\u7EC4\u4EF6'
-			);
-		}
-	}]);
-
-	return App;
+    return App;
 }(_react.Component);
 
 // 渲染

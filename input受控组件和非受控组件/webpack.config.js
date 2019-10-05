@@ -2,6 +2,7 @@ module.exports = {
 	// 入口
 	entry: {
 		'01': './jsx/01.jsx',
+		'02': './jsx/02.jsx',
 		
 	},
 	// 发布
